@@ -78,7 +78,7 @@ const myApi = "8cab626c05f8766826a37e476d07b229";
 
 const NowPlaying = async () => {
   const res = await fetch(
-    "https://api.themoviedb.org/4/list/8248299?api_key=8cab626c05f8766826a37e476d07b229&language=fr-FR&page=1"
+    "https://api.themoviedb.org/4/list/8248368?api_key=8cab626c05f8766826a37e476d07b229&language=fr-FR&page=1"
   );
   const data = await res.json();
   const NowPlayingmovies = data.results;
@@ -87,7 +87,7 @@ const NowPlaying = async () => {
 
 const TodayTrending = async () => {
   const res = await fetch(
-    "https://api.themoviedb.org/4/list/8248299?api_key=8cab626c05f8766826a37e476d07b229&language=fr-FR&page=1"
+    "https://api.themoviedb.org/4/list/8248355?api_key=8cab626c05f8766826a37e476d07b229&language=fr-FR&page=1"
   );
   const data = await res.json();
   const trendingtoday = data.results;
@@ -96,7 +96,7 @@ const TodayTrending = async () => {
 
 const popularnow = async () => {
   const res = await fetch(
-    `https://api.themoviedb.org/4/list/8248353?api_key=8cab626c05f8766826a37e476d07b229&language=fr-FR&page=1`
+    `https://api.themoviedb.org/4/list/8248358?api_key=8cab626c05f8766826a37e476d07b229&language=fr-FR&page=1`
   );
   const data = await res.json();
   const popularnowmovies = data.results;
@@ -104,11 +104,12 @@ const popularnow = async () => {
 };
 const Toprated = async () => {
   const res = await fetch(
-    `https://api.themoviedb.org/4/list/8248354?api_key=8cab626c05f8766826a37e476d07b229&language=fr-FR&page=1`
+    `https://api.themoviedb.org/4/list/8248361?api_key=8cab626c05f8766826a37e476d07b229&language=fr-FR&page=1`
   );
   const data = await res.json();
 
   const Topratedmovies = data.results;
+ 
   return Topratedmovies;
 };
 
