@@ -93,7 +93,7 @@ const myApi = "6b2dec73b6697866a50cdaef60ccffcb";
 
 const firstpage = async () => {
   const res = await fetch(
-    `https://api.themoviedb.org/4/list/8248361/tv/${category}?api_key=6b2dec73b6697866a50cdaef60ccffcb&page=${intialPage}`
+    `https://api.themoviedb.org/4/list/8248361${category}?api_key=6b2dec73b6697866a50cdaef60ccffcb&page=${intialPage}`
   );
   const data = await res.json();
   const airingtoday = data.results;
@@ -108,7 +108,7 @@ const firstpage = async () => {
 
 const Secondpage = async () => {
   const res = await fetch(
-    `https://api.themoviedb.org/3/discover/tv?api_key=6b2dec73b6697866a50cdaef60ccffcb&language=en-US&page=${intialPage}&with_genres=${categoryId}`
+    `https://api.themoviedb.org/4/list/8248361?api_key=6b2dec73b6697866a50cdaef60ccffcb&language=en-US&page=${intialPage}&with_genres=${categoryId}`
   );
   const data = await res.json();
   const airingtoday = data.results;

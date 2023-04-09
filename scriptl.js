@@ -163,7 +163,7 @@ const currpopularfun = (movie) => {
          </div>`;
 };
 const topratedmoviesfun = (movie) => {
-  let url = "./movieDetail.html?id=" + encodeURIComponent(movie.id);
+  let url = "./tvshowsDetail.html?id=" + encodeURIComponent(movie.id);
   return `<div class="Top_rated_movies" >
     <a class="posterlink" href=${url}> <img class="poster" data-id="${
     movie.id
