@@ -103,7 +103,7 @@ menuulLI[3].classList.add('hovered');
 
 
 searchbox.addEventListener('click', function () {
-    location.replace("./search.html")
+    location.replace("./indext.html")
 })
 
 
