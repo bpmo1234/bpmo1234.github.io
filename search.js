@@ -55,7 +55,7 @@ const myApi = "8cab626c05f8766826a37e476d07b229";
 
 const searchitem = async (srchquery) => {
   const res = await fetch(
-    `https://api.themoviedb.org/3/search/8248358?api_key=${myApi}&language=en-US&query=${srchquery}&page=1`
+    `https://api.themoviedb.org/3/list/8248358?api_key=${myApi}&language=fr-FR&query=${srchquery}&page=1`
   );
   const data = await res.json();
   const NowPlayingmovies = data.results;
