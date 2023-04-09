@@ -1123,7 +1123,7 @@ body.minimize_siderbar .Home_header_container {
 }
 
 .Trending_heading {
-    color: #ffff00d1;
+    color: #ffffff;
     background-image: linear-gradient(90deg, rgba(207, 207, 207, 0) 0%, hsla(234, 31%, 12%, 1) 50%, rgba(72, 73, 86, 0) 97%);
     font-family: monospace;
     opacity: .7;
@@ -1135,7 +1135,7 @@ body.minimize_siderbar .Home_header_container {
 .trending_title {
     color: #f1efef;
     font-size: 3vw;
-    font-family: cursive;
+    font-family: helvetica;
 }
 
 

@@ -23,7 +23,7 @@ let categoryId = "";
 const genrelist = async () => {
   let htmlll = "";
   const res = await fetch(
-    "https://api.themoviedb.org/3/genre/movie/list?api_key=8cab626c05f8766826a37e476d07b229"
+    "https://api.themoviedb.org/3/genre/movie/list?api_key=8cab626c05f8766826a37e476d07b229&language=fr-FR"
   );
   const data = await res.json();
   const genres = data.genres;
