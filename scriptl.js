@@ -78,7 +78,7 @@ const myApi = "8cab626c05f8766826a37e476d07b229";
 
 const NowPlaying = async () => {
   const res = await fetch(
-    "https://www.themoviedb.org/list/8248299&language=en-US&page=1"
+    "https://api.themoviedb.org/4/list/8248299?page=1&api_key=8cab626c05f8766826a37e476d07b229&language=fr-FR"
   );
   const data = await res.json();
   const NowPlayingmovies = data.results;
@@ -96,7 +96,7 @@ const TodayTrending = async () => {
 
 const popularnow = async () => {
   const res = await fetch(
-    `https://www.themoviedb.org/list/8248353&language=en-US&page=1`
+    `https://api.themoviedb.org/4/list/8248353?page=1&api_key=8cab626c05f8766826a37e476d07b229&language=fr-FR`
   );
   const data = await res.json();
   const popularnowmovies = data.results;
@@ -104,7 +104,7 @@ const popularnow = async () => {
 };
 const Toprated = async () => {
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie/top_rated?api_key=${myApi}&language=en-US&page=1`
+    `https://api.themoviedb.org/4/list/8248354?page=1&api_key=8cab626c05f8766826a37e476d07b229&language=fr-FR`
   );
   const data = await res.json();
 
