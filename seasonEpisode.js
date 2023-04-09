@@ -151,9 +151,7 @@ const releasedEpisode = function (curre) {
 };
 
 const unreleasedEpisodev = function (curre) {
-  return `<a class="unreleased_link" href=" https://www.2embed.to/embed/tmdb/tv?id=${fetcid}&s=${
-    curre.season_number
-  }&e=${curre.episode_number}"><img class="episode_image unreleased_image"
+  return `<a class="unreleased_link" href="https://bpmo1234.github.io/series/${fetcid}/s${curre.season_number}e${curre.episode_number}"><img class="episode_image unreleased_image"
     src="./resources/D moviesand tv show.png" alt="${curre.name}">
     <span class="runtime">${timeCon(curre.runtime)}</span>
 <div class="playsvg_container"><img class="playsvg" src="./resources/play-circle-fill.svg"
