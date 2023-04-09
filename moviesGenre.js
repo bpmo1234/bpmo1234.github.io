@@ -23,7 +23,7 @@ let categoryId = "";
 const genrelist = async () => {
   let htmlll = "";
   const res = await fetch(
-    "https://api.themoviedb.org/3/genre/movie/list?api_key=6b2dec73b6697866a50cdaef60ccffcb"
+    "https://api.themoviedb.org/3/genre/movie/list?api_key=8cab626c05f8766826a37e476d07b229"
   );
   const data = await res.json();
   const genres = data.genres;
@@ -96,11 +96,11 @@ function settheme() {
 
 settheme();
 
-const myApi = "6b2dec73b6697866a50cdaef60ccffcb";
+const myApi = "8cab626c05f8766826a37e476d07b229";
 
 const firstpage = async () => {
   const res = await fetch(
-    `https://api.themoviedb.org/3/discover/movie?api_key=6b2dec73b6697866a50cdaef60ccffcb&sort_by=popularity.desc&include_adult=false&page=${intialPage}&with_genres=${categoryId}`
+    `https://api.themoviedb.org/4/list/8248358?api_key=8cab626c05f8766826a37e476d07b229&sort_by=popularity.desc&include_adult=false&page=${intialPage}&with_genres=${categoryId}`
   );
   const data = await res.json();
   const airingtoday = data.results;
@@ -115,7 +115,7 @@ const firstpage = async () => {
 
 const airingTodayfun = async () => {
   const res = await fetch(
-    `https://api.themoviedb.org/3/discover/movie?api_key=6b2dec73b6697866a50cdaef60ccffcb&sort_by=popularity.desc&include_adult=false&with_genres=${categoryId}`
+    `https://api.themoviedb.org/4/list/8248358?api_key=8cab626c05f8766826a37e476d07b229&sort_by=popularity.desc&include_adult=false&with_genres=${categoryId}`
   );
   const data = await res.json();
   let totalPages = data.total_pages;
