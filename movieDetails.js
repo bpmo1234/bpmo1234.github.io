@@ -354,7 +354,7 @@ const recomMOvie = async (id) => {
 
 const SimilarMOvie = async (id) => {
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${myApi}`
+    `https://api.themoviedb.org/4/list/8248368?api_key=8cab626c05f8766826a37e476d07b229&language=fr-FR&page=1`
   );
   const data = await res.json();
   const SimilarMovies = data.results;
