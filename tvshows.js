@@ -8,7 +8,7 @@ const sidenavChildContainer = document.querySelector(
 );
 const searchResultDiv = document.querySelector(".search_result_div");
 const menuulLI = document.querySelectorAll(".menu_ul li");
-
+const categoLi = document.querySelectorAll(".tvshowcatrgory_ul li");
 const categoUl = document.querySelector(".tvshowcatrgory_ul");
 const movieDetailnavContainer = document.querySelector(
   ".movieDetailnavContainer"
@@ -17,26 +17,10 @@ const NextBtn = document.querySelector(".Next_btn");
 const previousBtn = document.querySelector(".previous_btn");
 const pageCount = document.querySelector(".pageCount");
 const searchbox = document.querySelector(".search");
+const tvshowscatogryGenre = document.querySelector(".tvshowscatogry_genre");
+const paginationBtn = document.querySelectorAll(".paginationBtn");
 
-let categoryId = "";
-
-const genrelist = async () => {
-  let htmlll = "";
-  const res = await fetch(
-    "https://api.themoviedb.org/3/genre/movie/list?api_key=8cab626c05f8766826a37e476d07b229"
-  );
-  const data = await res.json();
-  const genres = data.genres;
-  genres.forEach((item) => {
-    htmlll += `<li class="tvshowGenreList" data-id=${item.id}>${item.name}</li>`;
-  });
-  categoUl.innerHTML = htmlll;
-  const categoLi = document.querySelectorAll(".tvshowcatrgory_ul li");
-  categoLi[0].classList.add("actv");
-  categoryId = categoLi[0].dataset.id;
-};
-
-genrelist();
+paginationBtn.forEach((item) => item.classList.add("Categorymode"));
 
 window.addEventListener("scroll", function () {
   let intiCon = categoUl.getBoundingClientRect();
@@ -53,7 +37,11 @@ menuulLI.forEach((item) => {
     item.classList.add("hovered");
   });
 });
-menuulLI[1].classList.add("hovered");
+menuulLI[2].classList.add("hovered");
+
+categoLi[0].classList.add("actv");
+
+let category = "airing_today";
 
 hamburgerPhone.addEventListener("click", function () {
   sidenavChildContainer.classList.add("sidenav_container_active");
@@ -96,17 +84,37 @@ function settheme() {
 
 settheme();
 
+let airingToday = "airing_today";
+let onTheAir = "on_the_air";
+let Popular = "popular";
+let topRated = "top_rated";
+
 const myApi = "8cab626c05f8766826a37e476d07b229";
 
 const firstpage = async () => {
   const res = await fetch(
-    `https://api.themoviedb.org/4/list/8248299?page=1&api_key=8cab626c05f8766826a37e476d07b229&language=fr-FR`
+    `https://api.themoviedb.org/3/tv/${category}?api_key=8cab626c05f8766826a37e476d07b229&page=${intialPage}`
   );
   const data = await res.json();
   const airingtoday = data.results;
   let htmll = " ";
   airingtoday.forEach((item) => {
-    if (item.poster_path !== null) {
+    if (item.poster_path !== null && "first_air_date" in item) {
+      htmll += searchfun(item);
+      searchResultDiv.innerHTML = htmll;
+    }
+  });
+};
+
+const Secondpage = async () => {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/discover/tv?api_key=8cab626c05f8766826a37e476d07b229&language=en-US&page=${intialPage}&with_genres=${categoryId}`
+  );
+  const data = await res.json();
+  const airingtoday = data.results;
+  let htmll = " ";
+  airingtoday.forEach((item) => {
+    if (item.poster_path !== null && "first_air_date" in item) {
       htmll += searchfun(item);
       searchResultDiv.innerHTML = htmll;
     }
@@ -115,7 +123,16 @@ const firstpage = async () => {
 
 const airingTodayfun = async () => {
   const res = await fetch(
-    `https://api.themoviedb.org/4/list/8248353?page=1&api_key=8cab626c05f8766826a37e476d07b229&language=fr-FR&sort_by=popularity.desc&include_adult=false&with_genres=${categoryId}`
+    `https://api.themoviedb.org/3/tv/${category}?api_key=8cab626c05f8766826a37e476d07b229`
+  );
+  const data = await res.json();
+  let totalPages = data.total_pages;
+  return totalPages;
+};
+
+const airingTodayfun2 = async () => {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/discover/tv?api_key=8cab626c05f8766826a37e476d07b229&sort_by=popularity.desc&include_adult=false&with_genres=${categoryId}`
   );
   const data = await res.json();
   let totalPages = data.total_pages;
@@ -148,33 +165,55 @@ const btnactive = function (intial, totalpage) {
 previousBtn.classList.add("btnDeactive");
 
 NextBtn.addEventListener("click", function () {
-  airingTodayfun().then((totalpage) => {
-    if (intialPage < totalpage) {
-      intialPage += 1;
-      firstpage();
-      pageCount.innerText = `${intialPage} of ${totalpage}`;
-      btnactive(intialPage, totalpage);
-    }
-  });
+  if (NextBtn.classList.contains("Categorymode")) {
+    airingTodayfun().then((totalpage) => {
+      if (intialPage < totalpage) {
+        intialPage += 1;
+        firstpage();
+        pageCount.innerText = `${intialPage} of ${totalpage}`;
+        btnactive(intialPage, totalpage);
+      }
+    });
+  } else {
+    airingTodayfun2().then((totalpage) => {
+      if (intialPage < totalpage) {
+        intialPage += 1;
+        Secondpage();
+        pageCount.innerText = `${intialPage} of ${totalpage}`;
+        btnactive(intialPage, totalpage);
+      }
+    });
+  }
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 });
 
 previousBtn.addEventListener("click", function () {
-  airingTodayfun().then((totalpage) => {
-    if (intialPage > 1) {
-      intialPage -= 1;
-      pageCount.innerText = `${intialPage} of ${totalpage}`;
-      firstpage();
-      btnactive(intialPage, totalpage);
-    }
-  });
+  if (NextBtn.classList.contains("Categorymode")) {
+    airingTodayfun().then((totalpage) => {
+      if (intialPage > 1) {
+        intialPage -= 1;
+        pageCount.innerText = `${intialPage} of ${totalpage}`;
+        firstpage();
+        btnactive(intialPage, totalpage);
+      }
+    });
+  } else {
+    airingTodayfun2().then((totalpage) => {
+      if (intialPage > 1) {
+        intialPage -= 1;
+        pageCount.innerText = `${intialPage} of ${totalpage}`;
+        Secondpage();
+        btnactive(intialPage, totalpage);
+      }
+    });
+  }
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 });
 
 const searchfun = (movie) => {
-  let url = "./movieDetail.html?id=" + encodeURIComponent(movie.id);
+  let url = "./TvShowsDetails.html?id=" + encodeURIComponent(movie.id);
   return `<div class="item" >
     <a class="posterlink" href="${url}"> <img class="poster" data-id="${
     movie.id
@@ -183,12 +222,12 @@ const searchfun = (movie) => {
   data-src="https://image.tmdb.org/t/p/w500/${movie.poster_path}"
   loading="lazy" 
   onload="this.src=this.getAttribute('data-src')"
-       
-          alt="${movie.title}"></a>
-         <p class="movie_title movie_title_search" >${movie.title}</p>
+ 
+        alt="${movie.name}"></a>
+         <p class="movie_title movie_title_search" >${movie.name}</p>
          <div class="date_rating tvshows_date_rating">
              <p class="date date_search">${dateFormatter(
-               movie.release_date
+               movie.first_air_date
              )}</p><span class="dot dot2 recommendTvShow_date_dot"></span>
              <p class="rating rating_search">${
                movie.vote_average
@@ -197,7 +236,7 @@ const searchfun = (movie) => {
                          <path
                              d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                      </svg></span></p>
-             <div class="category category_search recommendTvShow_category">Movie</div>
+             <div class="category category_search recommendTvShow_category">TV show</div>
              </div>
          </div>`;
 };
@@ -208,21 +247,69 @@ const dateFormatter = function (date) {
   return newDate;
 };
 
-categoUl.addEventListener("click", function (e) {
-  let element = e.target;
-  if (element.classList.contains("tvshowGenreList")) {
-    const categoLi = document.querySelectorAll(".tvshowcatrgory_ul li");
+categoLi.forEach((item) => {
+  item.addEventListener("click", function () {
+    paginationBtn.forEach((item) => item.classList.add("Categorymode"));
     categoLi.forEach((i) => i.classList.remove("actv"));
-    element.classList.add("actv");
-    categoryId = element.dataset.id;
+    document
+      .querySelectorAll(".tvGenrelist")
+      .forEach((item) => item.classList.remove("actv"));
+    item.classList.add("actv");
+    if (item.innerText == "Airing Today") {
+      category = "airing_today";
+    }
+    if (item.innerText == "On The Air") {
+      category = "on_the_air";
+    }
+    if (item.innerText == "Popular") {
+      category = "popular";
+    }
+    if (item.innerText == "Top Rated") {
+      category = "top_rated";
+    }
     intialPage = 1;
     firstpage();
     airingTodayfun().then((totalpage) => {
       pageCount.innerText = `${intialPage} of ${totalpage}`;
     });
-  }
+  });
 });
 
 searchbox.addEventListener("click", function () {
   location.replace("./search.html");
+});
+
+//Loading tv shows genre list/
+
+const genreList = async () => {
+  let genreHtml = "";
+  const res = await fetch(
+    "https://api.themoviedb.org/3/genre/tv/list?api_key=8cab626c05f8766826a37e476d07b229"
+  );
+  const data = await res.json();
+  const tvshowsGenrelist = data.genres;
+  tvshowsGenrelist.forEach((item) => {
+    genreHtml += `<li class="tvGenrelist" data-id=${item.id}>${item.name}</li>`;
+  });
+  tvshowscatogryGenre.innerHTML = genreHtml;
+};
+
+genreList();
+
+tvshowscatogryGenre.addEventListener("click", function (e) {
+  let element = e.target;
+  if (element.classList.contains("tvGenrelist")) {
+    paginationBtn.forEach((item) => item.classList.remove("Categorymode"));
+    document
+      .querySelectorAll(".tvGenrelist")
+      .forEach((item) => item.classList.remove("actv"));
+    categoLi.forEach((i) => i.classList.remove("actv"));
+    element.classList.add("actv");
+    categoryId = element.dataset.id;
+    intialPage = 1;
+    Secondpage();
+    airingTodayfun2().then((totalpage) => {
+      pageCount.innerText = `${intialPage} of ${totalpage}`;
+    });
+  }
 });
