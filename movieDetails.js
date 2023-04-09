@@ -333,7 +333,7 @@ const Bigposter = function (movieee) {
 
 const CurrMovie = async (id) => {
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie/${id}?api_key=680c99274ddab12ffac27271d9445d45&append_to_response=credits`
+    `https://api.themoviedb.org/3/movie/${id}?api_key=680c99274ddab12ffac27271d9445d45&append_to_response=credits&language=fr-FR`
   );
 
   const data = await res.json();
