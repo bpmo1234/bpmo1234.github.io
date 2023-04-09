@@ -155,7 +155,7 @@ const averagVoteformat = function (receivedVote) {
 const Castfun = (castee) => {
   let url = "./personDetail.html?id=" + encodeURIComponent(castee.id);
   return `<div class="Now_playing_movies castdiv" >
-    <a class="posterlink" href="${url}"> <img class="poster" data-id="${castee.id}" src="https://image.tmdb.org/t/p/w500/${castee.profile_path}" loading="lazy" 
+    <a class="posterlink" href="${url}"> <img class="poster" data-id="${castee.id}" src="https://image.tmdb.org/t/p/w500/${castee.profile_path}" loading="lazy&language=fr-FR" 
         onerror="this.onerror=null;this.src='./resources/D moviesand tv show.png';"
         alt="${castee.original_name}"></a>
         <div class="name_character_container">
@@ -207,7 +207,7 @@ const html2 = function (tvshow) {
         <div class="date_rating tvshowdetail_date_rating">
             <p class="time">${
               tvshow.number_of_seasons
-            } Seasons</p><span class="dot dot2 dot3"></span>
+            } Saisons</p><span class="dot dot2 dot3"></span>
             <p class="time">${
               tvshow.episode_run_time[0]
             } minutes per episode</p><span class="dot dot2 dot3"></span>
@@ -232,7 +232,7 @@ const html2 = function (tvshow) {
                 <path class="path_btnn"
                     d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z">
                 </path>
-            </svg>seasons</button></a> 
+            </svg>Saisons</button></a> 
     </div>
 
 </div> `;
@@ -244,7 +244,7 @@ const Bigposter = function (movieee) {
 
 const CurrTvshow = async (id) => {
   const res = await fetch(
-    `https://api.themoviedb.org/3/tv/${id}?api_key=${myApi}&append_to_response=credits,recommendations,similar`
+    `https://api.themoviedb.org/3/tv/${id}?api_key=${myApi}&append_to_response=credits,recommendations,similar&language=fr-FR`
   );
   const data = await res.json();
   return data;

@@ -124,7 +124,7 @@ const CurrTvshow = async (id) => {
 const CurrEpisode = async (tv_id, currSea, currEpiso) => {
   let episohtml;
   const res = await fetch(
-    `https://api.themoviedb.org/3/tv/${tv_id}/season/${currSea}/episode/${currEpiso}?api_key=8cab626c05f8766826a37e476d07b229`
+    `https://api.themoviedb.org/3/tv/${tv_id}/season/${currSea}/episode/${currEpiso}?api_key=8cab626c05f8766826a37e476d07b229&language=fr-FR`
   );
   const data = await res.json();
   episohtml = episodefun(data);
@@ -222,7 +222,7 @@ const seasonnumfun = function (seasoncc) {
     const currsea = function (seasonNO) {
       numseasons.forEach(async (item) => {
         if (seasonNO == item.season_number) {
-          currentSeason.innerText = `Season ${seasonNO}`;
+          currentSeason.innerText = `Saison ${seasonNO}`;
           let numOfEpisodes = item.episode_count;
           for (i = 1; i < numOfEpisodes + 1; i++) {
             await CurrEpisode(fetcid, seasonNO, i);

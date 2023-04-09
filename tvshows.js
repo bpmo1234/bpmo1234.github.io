@@ -93,7 +93,7 @@ const myApi = "6b2dec73b6697866a50cdaef60ccffcb";
 
 const firstpage = async () => {
   const res = await fetch(
-    `https://api.themoviedb.org/4/list/8248361${category}?api_key=6b2dec73b6697866a50cdaef60ccffcb&page=${intialPage}`
+    `https://api.themoviedb.org/4/list/8248361?api_key=6b2dec73b6697866a50cdaef60ccffcb&language=fr-FR&page=${intialPage}`
   );
   const data = await res.json();
   const airingtoday = data.results;
@@ -108,7 +108,7 @@ const firstpage = async () => {
 
 const Secondpage = async () => {
   const res = await fetch(
-    `https://api.themoviedb.org/4/list/8248361?api_key=6b2dec73b6697866a50cdaef60ccffcb&language=en-US&page=${intialPage}&with_genres=${categoryId}`
+    `https://api.themoviedb.org/4/list/8248361?api_key=6b2dec73b6697866a50cdaef60ccffcb&language=fr-FR&page=${intialPage}&with_genres=${categoryId}`
   );
   const data = await res.json();
   const airingtoday = data.results;
@@ -123,7 +123,7 @@ const Secondpage = async () => {
 
 const airingTodayfun = async () => {
   const res = await fetch(
-    `https://api.themoviedb.org/3/tv/${category}?api_key=6b2dec73b6697866a50cdaef60ccffcb`
+    `https://api.themoviedb.org/3/tv/${category}?api_key=6b2dec73b6697866a50cdaef60ccffcb&language=fr-FR`
   );
   const data = await res.json();
   let totalPages = data.total_pages;
@@ -132,7 +132,7 @@ const airingTodayfun = async () => {
 
 const airingTodayfun2 = async () => {
   const res = await fetch(
-    `https://api.themoviedb.org/3/discover/tv?api_key=6b2dec73b6697866a50cdaef60ccffcb&sort_by=popularity.desc&include_adult=false&with_genres=${categoryId}`
+    `https://api.themoviedb.org/3/discover/tv?api_key=6b2dec73b6697866a50cdaef60ccffcb&sort_by=popularity.desc&include_adult=false&with_genres=${categoryId}&language=fr-FR`
   );
   const data = await res.json();
   let totalPages = data.total_pages;
@@ -284,7 +284,7 @@ searchbox.addEventListener("click", function () {
 const genreList = async () => {
   let genreHtml = "";
   const res = await fetch(
-    "https://api.themoviedb.org/3/genre/tv/list?api_key=6b2dec73b6697866a50cdaef60ccffcb"
+    "https://api.themoviedb.org/3/genre/tv/list?api_key=6b2dec73b6697866a50cdaef60ccffcb&language=fr-FR"
   );
   const data = await res.json();
   const tvshowsGenrelist = data.genres;
