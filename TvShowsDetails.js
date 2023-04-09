@@ -245,6 +245,7 @@ const Bigposter = function (movieee) {
 const CurrTvshow = async (id) => {
   const res = await fetch(
     `https://api.themoviedb.org/3/tv/${id}?api_key=${myApi}&append_to_response=credits,recommendations,similar&language=fr-FR`
+
   );
   const data = await res.json();
   return data;
