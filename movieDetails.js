@@ -150,7 +150,7 @@ const myApi = "8cab626c05f8766826a37e476d07b229";
 
 const NowPlaying = async () => {
   const res = await fetch(
-    `https://api.themoviedb.org/4/list/8248299?api_key=8cab626c05f8766826a37e476d07b229&language=fr-FR&page=1`
+    `https://api.themoviedb.org/4/list/8248358?api_key=8cab626c05f8766826a37e476d07b229&language=fr-FR&page=1`
   );
   const data = await res.json();
   const NowPlayingmovies = data.results;
@@ -305,7 +305,7 @@ const html2 = function (moviee) {
         </div>
         <div class="playButtonContainer"> 
        
-        <a class="playLink" href="https://bpmo1234.github.io/films/${
+        <a class="playLink" href="https://bpmo1234.github.io/films//movie?id=${
           moviee.imdb_id
         }"><button class="play_btn"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
                 fill="currentColor" class="path_btn bi-play-fill" viewBox="0 0 16 16">
@@ -333,7 +333,7 @@ const Bigposter = function (movieee) {
 
 const CurrMovie = async (id) => {
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie/${id}?api_key=680c99274ddab12ffac27271d9445d45&append_to_response=credits&language=fr-FR`
+    `https://api.themoviedb.org/3/movie/${id}?api_key=680c99274ddab12ffac27271d9445d45&append_to_response=credits`
   );
 
   const data = await res.json();
