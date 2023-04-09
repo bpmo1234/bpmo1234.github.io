@@ -150,7 +150,7 @@ const myApi = "8cab626c05f8766826a37e476d07b229";
 
 const NowPlaying = async () => {
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie/now_playing?api_key=${myApi}&language=en-US&page=1`
+    `https://api.themoviedb.org/4/list/8248299?api_key=8cab626c05f8766826a37e476d07b229&language=fr-FR&page=1`
   );
   const data = await res.json();
   const NowPlayingmovies = data.results;
@@ -333,7 +333,7 @@ const Bigposter = function (movieee) {
 
 const CurrMovie = async (id) => {
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie/${id}?api_key=680c99274ddab12ffac27271d9445d45&append_to_response=credits`
+    `https://api.themoviedb.org/3/movie/${id}?api_key=680c99274ddab12ffac27271d9445d45&append_to_response=credits&language=fr-FR`
   );
 
   const data = await res.json();
