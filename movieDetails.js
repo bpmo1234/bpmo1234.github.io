@@ -93,7 +93,7 @@ const movieLoad = function () {
 };
 
 searchbox.addEventListener("click", function () {
-  location.replace("./search.html");
+  location.replace("./moviesGenre.html");
 });
 
 hamburgerPhone.addEventListener("click", function () {
