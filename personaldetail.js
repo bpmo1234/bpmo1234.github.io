@@ -27,7 +27,7 @@ const CategoriesContainer = document.querySelector(".CategoriesContainer");
 const categories_btn = document.querySelectorAll(".categories_btn");
 
 searchbox.addEventListener("click", function () {
-  location.replace("./search.html");
+  location.replace("./index.html");
 });
 
 hamburgerPhone.addEventListener("click", function () {
@@ -150,7 +150,7 @@ const personTvShowfun = (movie) => {
 
 const personMOvies = async (id) => {
   const res = await fetch(
-    `https://api.themoviedb.org/3/person/${id}?api_key=8cab626c05f8766826a37e476d07b229&append_to_response=combined_credits`
+    `https://api.themoviedb.org/3/person/${id}?api_key=6b2dec73b6697866a50cdaef60ccffcb&append_to_response=combined_credits&language=fr-FR`
   );
   const data = await res.json();
   const NowPlayingmovies = data;
