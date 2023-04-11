@@ -115,7 +115,7 @@ const firstpage = async () => {
 
 const airingTodayfun = async () => {
   const res = await fetch(
-    `https://api.themoviedb.org/4/list/8248358?api_key=8cab626c05f8766826a37e476d07b229&sort_by=popularity.desc&include_adult=false&with_genres=action`
+    `https://api.themoviedb.org/4/list/8248358?api_key=8cab626c05f8766826a37e476d07b229&sort_by=popularity.desc&include_adult=false&with_genres=${categoryId}`
   );
   const data = await res.json();
   let totalPages = data.total_pages;
