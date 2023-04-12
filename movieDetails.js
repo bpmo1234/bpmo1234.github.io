@@ -312,7 +312,7 @@ const html2 = function (moviee) {
                 <path class="path_btnn"
                     d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z">
                 </path>
-            </svg>Play</button></a> 
+            </svg>Regarder</button></a> 
             <span > <a class="GoogleButton" href="https://www.google.com/search?q=${
               moviee.title +
               " " +
