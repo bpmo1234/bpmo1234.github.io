@@ -186,7 +186,7 @@ const html2 = function (tvshow) {
     " " +
     "|" +
     " " +
-    "Cinemaa"
+    "Play Free"
   }`;
 
   let cate = "";
