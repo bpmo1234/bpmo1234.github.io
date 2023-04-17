@@ -132,7 +132,7 @@ const CurrEpisode = async (tv_id, currSea, currEpiso) => {
 };
 
 const releasedEpisode = function (curre) {
-  return `<a href="https://bpmo1234.github.io/series/${fetcid}/s${curre.season_number}/e${curre.episode_number}" target="_blank"><img class="episode_image"
+  return `<a href="https://bpmo1234.github.io/series/${fetcid}/s${curre.season_number}/e${curre.episode_number}"><img class="episode_image"
     src="https://image.tmdb.org/t/p/w500/${curre.still_path}" alt="${
     curre.name
   }">
