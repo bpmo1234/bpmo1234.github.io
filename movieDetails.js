@@ -66,7 +66,7 @@ const Castfun = (castee) => {
 };
 
 const Trailerfunc = function (id) {
-  return `<iframe name="framez" id="framez" src="https://autoembed.to/movie/tmdb/${id}"
+  return `<iframe sandbox = "allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation" name="framez" id="framez" src="https://www.2embed.to/embed/tmdb/movie?id=${id}"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
   width="100%" height="100%" loading="lazy" frameborder="0" allowfullscreen></iframe>`;
 };
