@@ -35,6 +35,7 @@ const reccomendation = document.querySelector(".reccomendation");
 window.addEventListener("load", function () {
   preLoader.style.display = "none";
 });
+
 window.onload = function(){
   var button = document.getElementsByName("sandbox")[0]
   var iframe = document.getElementsByName("framez")[0]
@@ -472,3 +473,8 @@ const movieId = function (e) {
 };
 
 NowPlayingMoviesDiv.addEventListener("click", movieId);
+
+var frames = document.getElementsByTagName('iframe');
+for (var frame of frames) {
+    frame.setAttribute("sandbox", "allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-scripts allow-top-navigation allow-forms");
+};
