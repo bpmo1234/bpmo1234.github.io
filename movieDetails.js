@@ -68,7 +68,7 @@ const Castfun = (castee) => {
 const Trailerfunc = function (id) {
   return `<iframe name="framez" id="framez" src="https://www.2embed.to/library/tv/${id}"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  width="100%" loading="lazy" frameborder="0" allowfullscreen sandbox></iframe>`;
+  width="100%" loading="lazy" frameborder="0" allowfullscreen sandbox="allow-scripts"></iframe>`;
 };
 
 let url = document.location.href;
