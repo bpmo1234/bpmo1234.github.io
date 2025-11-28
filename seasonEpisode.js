@@ -174,7 +174,7 @@ const Castfun = (castee) => {
 
 
 const releasedEpisode = function (curre) {
-    return `<a href=" https://autoembed.to/tv/tmdb/${fetcid}-${
+    return `<a href=" https://player.autoembed.cc/embed/tv/${fetcid}-${
       curre.season_number
     }-${curre.episode_number}"><img class="episode_image"
       src="https://image.tmdb.org/t/p/w500/${curre.still_path}" alt="${
@@ -193,7 +193,7 @@ const releasedEpisode = function (curre) {
   };
 
 const unreleasedEpisodev = function (curre) {
-  return `<a class="unreleased_link" href=" https://autoembed.to/tv/tmdb/id=${fetcid}-${
+  return `<a class="unreleased_link" href=" https://player.autoembed.cc/embed/tv/${fetcid}-${
     curre.season_number
   }-${curre.episode_number}"><img class="episode_image unreleased_image"
     src="./resources/D moviesand tv show.png" alt="${curre.name}">
