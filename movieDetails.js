@@ -96,7 +96,7 @@ const Trailerfunc = function (id) {
   .catch(error => {
     console.error('Error:', error);
   });
-  return `<iframe class="youtubePlayer" src="https://autoembed.to/movie/tmdb//${id}"
+  return `<iframe class="youtubePlayer" src="https://player.autoembed.cc/embed/movie/${id}"
   width="100%" height="100%" loading="lazy"  frameborder="0" allowfullscreen></iframe>`;
   /*return `<iframe name="framez" id="framez" src="https://autoembed.to/movie/tmdb/${id}"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
